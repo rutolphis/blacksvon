@@ -1,7 +1,7 @@
 import '../App.css'
+import React, { useState } from "react";
 
 function Compass(){
-    const compassCircle = document.querySelector(".compass-circle");
     let compass;
     let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
 || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
@@ -24,8 +24,11 @@ function Compass(){
   }
     function handler(e) {
         compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
-        alert(compass)
-        compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
+        setTransform(`translate(-50%, -50%) rotate(${-compass}deg)`)
+    }
+
+    function setTransform(data) {
+       document.documentElement.style.setProperty('--transform-compass',data)
     }
 
     return (
