@@ -9,7 +9,6 @@
 }
 
 .compass::before {
-  transition: opacity 0.5s ease-out;
   position: absolute;
   width: 320px;
   height: 320px;
@@ -17,7 +16,9 @@
   background: url(./Images/zamok.jpg) center
   no-repeat;
   opacity: var(--opacity-mypoint);
+  content: "";
   z-index: -1;
+  transition: opacity 0.5s ease-out;
 }
 
 .compass > .compass-circle,
@@ -32,4 +33,13 @@
   background: url(./Images/arrow.png) center
     no-repeat;
   background-size: contain;
+}
+
+.compass > .my-point {
+  opacity: var(--opacity-mypoint);
+  width: 20%;
+  height: 20%;
+  background: rgb(8, 223, 69);
+  border-radius: 50%;
+  transition: opacity 0.5s ease-out;
 }

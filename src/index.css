@@ -1,6 +1,6 @@
 :root {
   --transform-compass: translate(-50%, -50%);
-  --opacity-mypoint: opacity: 0;
+  --opacity-mypoint: 0;
 }
 
 body {
