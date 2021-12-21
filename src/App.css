@@ -25,7 +25,6 @@
   no-repeat;
   opacity: var(--opacity-mypoint);
   content: "";
-  z-index: -1;
   transition: opacity 0.5s ease-out;
 }
 
