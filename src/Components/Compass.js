@@ -2,8 +2,6 @@ import '../App.css'
 
 function Compass(){
     const compassCircle = document.querySelector(".compass-circle");
-    const startBtn = document.querySelector(".start-btn");
-    const myPoint = document.querySelector(".my-point");
     let compass;
     let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
 || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
@@ -26,15 +24,18 @@ function Compass(){
   }
     function handler(e) {
         compass = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+        alert(compass)
         compassCircle.style.transform = `translate(-50%, -50%) rotate(${-compass}deg)`;
     }
 
     return (
+      <div>
         <div className="compass">
           <div className="arrow"></div>
-            <div className="compass-circle"></div>
+          <div className="compass-circle"></div>
           <div className="my-point"></div>
-          <button className="start-btn" onClick={requestPer}>Start compass</button>
+        </div>
+        <button className="start-btn" onClick={requestPer}>Start compass</button>
       </div>
     )
 }
