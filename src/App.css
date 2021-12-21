@@ -30,13 +30,13 @@
   left: 50%;
   transform: var(--transform-compass);
   transition: transform 0.1s ease-out;
-  background: url(https://www.lifepng.com/wp-content/uploads/2020/07/1594241278_Red-arrow-png-HD.png) center
+  background: url(./Images/arrow.png) center
     no-repeat;
   background-size: contain;
 }
 
 .compass > .my-point {
-  opacity: 0;
+  opacity: var(--opacity-mypoint);
   width: 20%;
   height: 20%;
   background: rgb(8, 223, 69);
