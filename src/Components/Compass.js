@@ -31,7 +31,7 @@ function Compass(){
 
     return (
         <div className="compass">
-          <div className="arrow">Cau</div>
+          <div className="arrow"></div>
             <div className="compass-circle"></div>
           <div className="my-point"></div>
           <button className="start-btn" onClick={requestPer}>Start compass</button>
