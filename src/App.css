@@ -8,17 +8,16 @@
   margin: auto;
 }
 
-.compass > .arrow {
+.compass::before {
+  transition: opacity 0.5s ease-out;
   position: absolute;
-  width: 0;
-  height: 0;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-style: solid;
-  border-width: 30px 20px 0 20px;
-  border-color: red transparent transparent transparent;
-  z-index: 1;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: url(./Images/zamok.jpg) center
+  no-repeat;
+  opacity: var(--opacity-mypoint);
+  z-index: -1;
 }
 
 .compass > .compass-circle,
@@ -33,13 +32,4 @@
   background: url(./Images/arrow.png) center
     no-repeat;
   background-size: contain;
-}
-
-.compass > .my-point {
-  opacity: var(--opacity-mypoint);
-  width: 20%;
-  height: 20%;
-  background: rgb(8, 223, 69);
-  border-radius: 50%;
-  transition: opacity 0.5s ease-out;
 }

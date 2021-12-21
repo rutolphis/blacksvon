@@ -86,7 +86,6 @@ function Compass(){
         <div className="compass">
           <div className="arrow"></div>
           <div className="compass-circle"></div>
-          <div className="my-point"></div>
         </div>
         <button className="start-btn" onClick={init}>Start compass</button>
       </div>
