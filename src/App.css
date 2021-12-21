@@ -1,9 +1,17 @@
+.compass-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size:xx-large;
+}
 
 .compass {
   position: relative;
   width: 320px;
   height: 320px;
   border-radius: 50%;
+  background-color: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   margin: auto;
 }

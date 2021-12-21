@@ -83,6 +83,7 @@ function Compass(){
 
     return (
       <div>
+        <div className='compass-title'>Aby si vždy našla cestu domov!</div>
         <div className="compass">
           <div className="arrow"></div>
           <div className="compass-circle"></div>
