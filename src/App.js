@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {   
     if(aut == 1){
       initCompass()
-      initMap()
+      //initMap()
     }
   },[aut]);
 
