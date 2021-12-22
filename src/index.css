@@ -8,7 +8,7 @@ body {
   font-family: 'MyFont';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fdd935;
+  background-color: #333333;
 }
 
 code {
