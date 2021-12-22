@@ -27,7 +27,8 @@ function App() {
     if(input == 'odpoved') {
         document.querySelector('.input').style.display = 'none';
         document.querySelector('.overlay').style.display = 'none';
-        setAut(1);
+        initCompass()
+        initMap()
     }
     else {
         alert("Emo ty nepoznáš samú seba !")
@@ -136,7 +137,6 @@ function App() {
           <div className="arrow"></div>
           <div className="compass-circle"></div>
         </div>
-        <button onClick={initCompass}>click me</button>
       </div>
       <div>
       <LoadScript googleMapsApiKey="AIzaSyAl5E_rdNHlmFoGQg-c3Yu4PRfh5Tya0uY">  
