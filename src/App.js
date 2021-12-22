@@ -404,6 +404,9 @@ function App() {
           </GoogleMap>
         </LoadScript>
       </div>
+      <div className='christmas-title'>
+        Štastné a veselé Emko 🎅
+      </div>
       </div>
   );
 }
