@@ -1,28 +1,238 @@
-import './App.css';
+import './App.css'; 
 import React, { useEffect, useState } from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Marker,GoogleMap, LoadScript ,
+  DirectionsService,DirectionsRenderer} from '@react-google-maps/api';
 
 function App() {
+  const google = window.google;
   const [input, setInput] = useState('');
-  const [aut, setAut] = useState(0);
   let compass;
   let isIOS = /iPad|iPhone|iPod/.test(navigator.platform)
   || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
   let pointDegree;
+  const [directionResponse, setDirectionResponse] = useState(null);
   const [myLatLng,setMyLatLng] = useState({ lat: 0, lng: 0});
-
+  
   const containerStyle = {
     width: '400px',
     height: '400px'
   };
 
-  //useEffect(() => {   
-    //if(aut == 1){
-      //initCompass()
-      //initMap()
-    //}
-  //},[aut]);
+  const styleMap = 
+    [
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "poi",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "administrative",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": 0
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road.local",
+          "elementType": "all",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#ffffff"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 100
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "transit",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": 0
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "labels",
+          "stylers": [
+              {
+                  "hue": "#000000"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": -100
+              },
+              {
+                  "visibility": "off"
+              }
+          ]
+      },
+      {
+          "featureType": "road",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#bbbbbb"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": 26
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      },
+      {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
+              {
+                  "hue": "#dddddd"
+              },
+              {
+                  "saturation": -100
+              },
+              {
+                  "lightness": -3
+              },
+              {
+                  "visibility": "on"
+              }
+          ]
+      }
+  ]
 
+  function directionsCallback (response) {
+    console.log(response)
+
+    if (response !== null) {
+      if (response.status === 'OK') {
+        setDirectionResponse(response)
+        
+      } else {
+        console.log('response: ', response)
+      }
+    }
+  }
+  
   function handleInput() {
     if(input == 'odpoved') {
         document.querySelector('.input').style.display = 'none';
@@ -138,15 +348,61 @@ function App() {
           <div className="compass-circle"></div>
         </div>
       </div>
-      <div>
-      <LoadScript googleMapsApiKey="AIzaSyAl5E_rdNHlmFoGQg-c3Yu4PRfh5Tya0uY">  
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={myLatLng}
-        zoom={10}
-      />
-      </LoadScript>
-
+      <div className='map-title'>A žiadne výhovorky tu máš aj mapu.</div>
+      <div id='google-map'> 
+        <LoadScript
+          googleMapsApiKey="AIzaSyAl5E_rdNHlmFoGQg-c3Yu4PRfh5Tya0uY"
+        >
+           <GoogleMap
+            // required
+            
+            options={{    scrollwheel: false,
+              mapTypeControl: false,
+              fullscreenControl: false,
+              streetViewControl: false,
+              styles: styleMap
+            }}
+            id='direction-example'
+            // required
+            mapContainerStyle={containerStyle}
+            // required
+            zoom={2}
+            // required
+            center={myLatLng}
+          >
+            {
+              (
+                myLatLng.lat !== 0 &&
+                myLatLng.lng !== 0
+              ) && (
+                <DirectionsService
+                  // required
+                  options={{ 
+                    destination: {
+                      lat: 48.505034,
+                      lng: 17.428396,
+                    },
+                    origin: myLatLng,
+                    travelMode: 'DRIVING'
+                  }}
+                  // required
+                  callback={directionsCallback}
+                  
+                />)
+}
+               { directionResponse !== null && (
+                <DirectionsRenderer
+                  // required
+                  directions = {directionResponse}
+                  options={{
+                    polylineOptions: {
+                      strokeColor: 'red',
+                      strokeOpacity: 0.4,
+                      strokeWeight: 4
+                    }}}
+                />) }
+          </GoogleMap>
+        </LoadScript>
       </div>
       </div>
   );
