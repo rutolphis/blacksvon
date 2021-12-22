@@ -16,12 +16,12 @@ function App() {
     height: '400px'
   };
 
-  useEffect(() => {   
-    if(aut == 1){
-      initCompass()
+  //useEffect(() => {   
+    //if(aut == 1){
+      //initCompass()
       //initMap()
-    }
-  },[aut]);
+    //}
+  //},[aut]);
 
   function handleInput() {
     if(input == 'odpoved') {
@@ -136,6 +136,7 @@ function App() {
           <div className="arrow"></div>
           <div className="compass-circle"></div>
         </div>
+        <button onClick={initCompass}>click me</button>
       </div>
       <div>
       <LoadScript googleMapsApiKey="AIzaSyAl5E_rdNHlmFoGQg-c3Yu4PRfh5Tya0uY">  
