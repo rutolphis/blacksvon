@@ -236,14 +236,14 @@ function App() {
   }
   
   function handleInput() {
-    if(input == 'Rudolf') {
+    if(input == '237') {
         document.querySelector('.input').style.display = 'none';
         document.querySelector('.overlay').style.display = 'none';
         initCompass()
         initMap()
     }
     else {
-        alert("Emo ty očividne nepoznáš samú seba a beriem to ako urážku!")
+        alert("Emo ty očividne nepoznáš samú seba !")
     }
   }
 
@@ -343,7 +343,7 @@ function App() {
       </div>
       <div className='input'>
         <label className='label'>Kontrolná otázka pre Emíliu</label>
-        <label className='label'>Moja najoblúbenejšia osoba(po babke):</label>
+        <label className='label'>Číslo izby z obľúbeného filmu:</label>
         <input value={input} onInput={e => setInput(e.target.value)} className='input-box'/>
         <button onClick={handleInput} className='input-button'>Over odpoveď!</button>
       </div>
