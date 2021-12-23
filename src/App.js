@@ -1,4 +1,6 @@
 import './App.css'; 
+import ig from './Images/ig.png'
+import phone from './Images/phone.png'
 import React, { useEffect, useState } from 'react';
 import { Marker,GoogleMap, LoadScript ,
   DirectionsService,DirectionsRenderer} from '@react-google-maps/api';
@@ -234,14 +236,14 @@ function App() {
   }
   
   function handleInput() {
-    if(input == 'odpoved') {
+    if(input == 'Rudolf') {
         document.querySelector('.input').style.display = 'none';
         document.querySelector('.overlay').style.display = 'none';
         initCompass()
         initMap()
     }
     else {
-        alert("Emo ty nepoznáš samú seba !")
+        alert("Emo ty očividne nepoznáš samú seba a beriem to ako urážku!")
     }
   }
 
@@ -334,15 +336,20 @@ function App() {
 
   return (
     <div className="App">
+      <div>
+        <div className='page-title'>
+          Záchranný balíček na cestu domov
+        </div>
+      </div>
       <div className='input'>
         <label className='label'>Kontrolná otázka pre Emíliu</label>
-        <label className='label'>Este neviem:</label>
+        <label className='label'>Moja najoblúbenejšia osoba(po babke):</label>
         <input value={input} onInput={e => setInput(e.target.value)} className='input-box'/>
         <button onClick={handleInput} className='input-button'>Over odpoveď!</button>
       </div>
       <div className='overlay'/>
       <div>
-        <div className='compass-title'>Aby si vždy našla cestu domov!</div>
+        <div className='compass-title'>Aby si vždy našla cestu ti pomože tento kompas!</div>
         <div className="compass">
           <div className="arrow"></div>
           <div className="compass-circle"></div>
@@ -404,9 +411,11 @@ function App() {
           </GoogleMap>
         </LoadScript>
       </div>
+      <a href="tel:+42110823367" className='call-div'><span className='call-title'>A keď už nechceš ísť domov, tak mi aspoň sem tam zavolaj</span><img src={phone} className='img'/></a>
       <div className='christmas-title'>
         Štastné a veselé Emko 🎅
       </div>
+        <a href='https://www.instagram.com/rutolphis/' className='footer-div'>Web created by<img src={ig} className='footer-img'></img></a>
       </div>
   );
 }
