@@ -411,7 +411,7 @@ function App() {
           </GoogleMap>
         </LoadScript>
       </div>
-      <a href="tel:+42110823367" className='call-div'><span className='call-title'>A keď už nechceš ísť domov, tak mi aspoň sem tam zavolaj</span><img src={phone} className='img'/></a>
+      <a href="tel:+421910823367" className='call-div'><span className='call-title'>A keď už nechceš ísť domov, tak mi aspoň sem tam zavolaj</span><img src={phone} className='img'/></a>
       <div className='christmas-title'>
         Štastné a veselé Emko 🎅
       </div>
